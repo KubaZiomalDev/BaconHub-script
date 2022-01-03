@@ -1,11 +1,19 @@
 if game.PlaceId == 155615604 then
     local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-    local Window = Library.CreateLib("BaconHub", "Sentinel")
+    local Window = Library.CreateLib("BaconHub | Prison Life", "BloodTheme")
 
 --Main
 
     local Tab = Window:NewTab("Main")
     local MainSection = Tab:NewSection("Main")
+    MainSection:NewDropdown("Gun Menu", "Give you gun", {"M9", "Remington 870", "AK-47"}, function(v)
+    print(currentOption)
+
+    local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[v].ITEMPICKUP
+    local Event = game:GetService("Workspace").Remote.ItemHandler
+    Event:InvokeServer(A_1)
+
+end)
 
 --Player
 
@@ -17,8 +25,22 @@ if game.PlaceId == 155615604 then
     PlayerSection:NewSlider("JumpPower", "Change player JumpPower", 300, 50, function(s)
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
     end)
+    PlayerSection:NewButton("Join Guards", "Change your team to guards", function()
+        print("Clicked")
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+    local A_1 = "Bright blue"
+    local Event = game:GetService("Workspace").Remote.TeamEvent
+    Event:FireServer(A_1)
+end)
+    PlayerSection:NewButton("Join Prisoners", "Change your team to Prisoners", function()
+        print("Clicked")
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+    local A_1 = "Bright orange"
+    local Event = game:GetService("Workspace").Remote.TeamEvent
+    Event:FireServer(A_1)
+end)
 
---Ui
+--UI
 
     local Tab = Window:NewTab("UI")
     local UiSection = Tab:NewSection("UI")
