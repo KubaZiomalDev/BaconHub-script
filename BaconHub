@@ -14,6 +14,14 @@ if game.PlaceId == 155615604 then
     Event:InvokeServer(A_1)
 
 end)
+    MainSection:NewDropdown("Meele Menu", "Give you Meele", {"Crude Knife", "Hammer", "Coming soon..."}, function(v)
+    print(currentOption)
+ 
+    local A_1 = game:GetService("Workspace")["Prison_ITEMS"].single[v].ITEMPICKUP
+    local Event = game:GetService("Workspace").Remote.ItemHandler
+    Event:InvokeServer(A_1)
+
+end)
 
 --Player
 
